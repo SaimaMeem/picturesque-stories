@@ -1,3 +1,6 @@
 .bg-footer {
-    background-color: #0B0D17;
+    background-color: #123043;
+}
+.bg-footer h2{
+    font-family: 'Fira Sans', sans-serif;
 }

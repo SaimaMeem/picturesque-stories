@@ -5,6 +5,7 @@ import { faEnvelope, faHome, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faGoogle, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom';
 const Footer = () => {
+    let year= new Date().getFullYear();
     return (
         <div>
             <footer className="bg-footer text-white py-5 mt-5">
@@ -35,7 +36,7 @@ const Footer = () => {
                         <div className="col-lg-6 col-md-12 order-lg-2 col-12 px-3 pt-3 pb-2">
                             <div className="text-center">
                                 <h2> Picturesque Stories</h2>
-                                <p> Copyright © 2022 Picturesque Stories</p>
+                                <p> Copyright &copy; {year} Picturesque Stories</p>
                                 <p> All Rights Reserved</p>
                             </div>
                             <div className="text-center mb-4">
