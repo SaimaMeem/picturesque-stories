@@ -1,0 +1,33 @@
+.card img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.btn-card {
+    background-color: white !important;
+    color: #F34F44 !important;
+    font-weight: 600 !important;
+    border: 2px solid #F34F44 !important;
+    transition: all 1s;
+
+
+}
+
+.btn-card:hover {
+    color: white !important;
+    background-color: #F34F44 !important;
+    animation: pulse 1s infinite;
+    transition: .3s;
+}
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    70% {
+      transform: scale(.9);
+    }
+      100% {
+      transform: scale(1);
+    }
+  }
+  

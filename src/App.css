@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:wght@400;500;600&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
 
 .App {
-  text-align: center;
-
+  /* text-align: center; */
   font-family: 'Fira Sans', sans-serif;
 
 }
-
+h2{
+  text-align: center;
+  padding-bottom: 0.6em;
+  font-family: 'Playfair Display', serif;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
