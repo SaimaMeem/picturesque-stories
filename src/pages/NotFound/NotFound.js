@@ -5,7 +5,7 @@ import image from '../../images/notfound.png';
 import './NotFound.css';
 const NotFound = () => {
     return (
-        <Container>
+        <Container className=''>
             <div className='d-flex row justify-content-center'>
             <Image className='w-auto not-found-image' src={image} fluid></Image>
             <div className='text-center'>
