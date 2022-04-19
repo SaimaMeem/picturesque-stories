@@ -69,7 +69,7 @@ const Login = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col} md="4" className='mx-auto'>
                         <FloatingLabel
-                            controlId="floatingInput"
+                            controlId="floatingEmail"
                             label="Email address"
                             className="mb-3"
                         >
