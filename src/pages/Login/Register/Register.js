@@ -100,7 +100,7 @@ const Register = () => {
                         {divElement}
                     </div>
                     <Button type="submit" className='text-center my-3 mx-auto btn-card w-25 text-uppercase' disabled={!agree}>Register</Button>
-                    <p className='mb-3'>Already have an account? &nbsp;&nbsp;<Link to="/login" className='text-warning text-decoration-none text-uppercase fw-bold' onClick={navigateLogin} >Login</Link></p>
+                    <p className='mb-3 para'>Already have an account? &nbsp;&nbsp;<Link to="/login" className='text-warning text-decoration-none text-uppercase fw-bold' onClick={navigateLogin} >Login</Link></p>
                 </Form.Group>
             </Form>
             <div className="or"> OR </div>

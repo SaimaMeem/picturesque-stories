@@ -1,15 +1,17 @@
 import React, { useRef, useState } from 'react';
 import { Button, Col, Container, FloatingLabel, Form, Row } from 'react-bootstrap';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import auth from '../../firebase.init';
 const Checkout = () => {
     const { serviceId } = useParams();
+    const [user] = useAuthState(auth);
     const [validated, setValidated] = useState(false);
-    const usernameRef = useRef('');
-    const emailRef = useRef('');
     const passwordRef = useRef('');
     const phoneRef = useRef('');
     const addressRef = useRef('');
+    const commentsRef = useRef('');
     // const navigate = useNavigate();
     // let divElement;
     const handleSubmit = async (event) => {
@@ -20,13 +22,12 @@ const Checkout = () => {
         }
         setValidated(true);
         event.preventDefault();
-        let username = usernameRef.current.value;
-        let email = emailRef.current.value;
         let password = passwordRef.current.value;
         let address = addressRef.current.value;
         let phone = phoneRef.current.value;
-        console.log(email, password);
-        if (username && email && password && address && phone) {
+        // let comments = commentsRef.current.value;
+        console.log(user);
+        if (password && address && phone) {
             toast.info('Thank you for your Booking!', {
                 position: "bottom-right",
                 autoClose: 5000,
@@ -38,68 +39,78 @@ const Checkout = () => {
             });
             // navigate('/home');
         }
+
     };
+
     return (
-        <Container className='mt-4 mb-5'>
+        <Container className='my-5'>
             <h2>Booking Form for {serviceId}</h2>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form noValidate validated={validated} onSubmit={handleSubmit} className='py-3'>
                 <Row className="mb-3">
-                    <Form.Group as={Col} md="4" className='mx-auto'>
+                    <Form.Group as={Col} md="1" className='mx-auto'></Form.Group>
+                    <Form.Group as={Col} md="5" className='mx-auto'>
                         <FloatingLabel
                             controlId="floatingName"
                             label="Username"
                             className="mb-3"
                         >
-                            <Form.Control type="text" placeholder="name" ref={usernameRef} required />
+                            <Form.Control type="text" placeholder="name" value={user.displayName} readOnly />
                             <Form.Control.Feedback type="invalid">
                                 Please provide your name.
                             </Form.Control.Feedback>
                         </FloatingLabel>
                     </Form.Group>
-                </Row>
-                <Row className="mb-3">
-                    <Form.Group as={Col} md="4" className='mx-auto'>
+                    <Form.Group as={Col} md="5" className='mx-auto'>
                         <FloatingLabel
                             controlId="floatingEmail"
                             label="Email address"
                             className="mb-3"
                         >
-                            <Form.Control type="email" placeholder="name@example.com" ref={emailRef} required />
+                            <Form.Control type="email" placeholder="name@example.com" value={user?.email} readonly />
                             <Form.Control.Feedback type="invalid">
                                 Please provide a valid email address.
                             </Form.Control.Feedback>
                         </FloatingLabel>
                     </Form.Group>
+                    <Form.Group as={Col} md="1" className='mx-auto'></Form.Group>
                 </Row>
                 <Row className="mb-4">
-                    <Form.Group as={Col} md="4" className='mx-auto'>
-                        <FloatingLabel controlId="floatingPhone" label="Phone">
+                    <Form.Group as={Col} md="1" className='mx-auto'></Form.Group>
+                    <Form.Group as={Col} md="5" className='mx-auto'>
+                        <FloatingLabel controlId="floatingPhone" label="Phone" className="mb-3">
                             <Form.Control type="text" placeholder="Phone" ref={phoneRef} required />
                             <Form.Control.Feedback type="invalid">
                                 Please provide a phone number.
                             </Form.Control.Feedback>
                         </FloatingLabel>
                     </Form.Group>
-                </Row>
-                <Row className="mb-4">
-                    <Form.Group as={Col} md="4" className='mx-auto'>
-                        <FloatingLabel controlId="floatingAddress" label="Address">
-                            <Form.Control type="text" placeholder="Address" ref={addressRef} required />
-                            <Form.Control.Feedback type="invalid">
-                                Please provide an address.
-                            </Form.Control.Feedback>
-                        </FloatingLabel>
-                    </Form.Group>
-                </Row>
-                <Row className="mb-4">
-                    <Form.Group as={Col} md="4" className='mx-auto'>
-                        <FloatingLabel controlId="floatingPassword" label="Password">
+                    <Form.Group as={Col} md="5" className='mx-auto'>
+                        <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3">
                             <Form.Control type="password" placeholder="Password" ref={passwordRef} required />
                             <Form.Control.Feedback type="invalid">
                                 Please provide a password.
                             </Form.Control.Feedback>
                         </FloatingLabel>
                     </Form.Group>
+                    <Form.Group as={Col} md="1" className='mx-auto'></Form.Group>
+                </Row>
+                <Row className="mb-4">
+                    <Form.Group as={Col} md="1" className='mx-auto'></Form.Group>
+                    <Form.Group as={Col} md="5" className='mx-auto'>
+                        <FloatingLabel controlId="floatingAddress" label="Address" className="mb-3">
+                            <Form.Control as="textarea" placeholder="Address" style={{ height: '80px' }} ref={addressRef} required />
+                            <Form.Control.Feedback type="invalid">
+                                Please provide an address.
+                            </Form.Control.Feedback>
+                        </FloatingLabel>
+                    </Form.Group>
+                    <Form.Group as={Col} md="5" className='mx-auto'>
+                        <FloatingLabel controlId="floatingComments" label="Comments" className="mb-3">
+                            <Form.Control as="textarea" placeholder="Comments" style={{ height: '80px' }} ref={commentsRef} />
+                        </FloatingLabel>
+                    </Form.Group>
+
+                    <Form.Group as={Col} md="1" className='mx-auto'></Form.Group>
                 </Row>
                 <Form.Group className="text-center">
                     {/* <div className='mb-3'>

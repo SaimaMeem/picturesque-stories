@@ -1,6 +1,7 @@
 .btn-social {
     font-weight: 600 !important;
     transition: all 1s;
+    width: 25% !important;
 }
 
 .btn-social:hover {
@@ -8,6 +9,7 @@
     transform: scale(.9);
     transition: .3s;
 }
+
 .btn-google {
     background-color: white !important;
     color: black !important;
@@ -15,10 +17,29 @@
 
 
 }
+
 /* .btn-google:hover {
     color: white !important;
     background-color: #F34F44 !important;
 } */
 .btn-facebook {
     border: 2px solid #259FF1 !important;
-} 
+}
+
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    .btn-social {
+        width: 100% !important;
+    }
+    .google-icon {
+        height: 10%;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .btn-social {
+        width: 30% !important;
+    }
+    .google-icon {
+        height: 10%;
+    }
+}

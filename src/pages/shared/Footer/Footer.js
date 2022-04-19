@@ -8,7 +8,7 @@ const Footer = () => {
     let year= new Date().getFullYear();
     return (
         <div>
-            <footer className="bg-footer text-white py-5 mt-5">
+            <footer className="bg-footer text-white py-4 mt-5">
                 <div className="container">
                     <div className="row d-flex px-2 py-5">
                         <div className="col-lg-3 col-md-6 order-lg-1 col-12 px-3 pt-3 pb-2 d-flex flex-column align-items-md-center align-items-center">
@@ -22,11 +22,12 @@ const Footer = () => {
 
                         <div className="col-lg-3 col-md-6 col-12 order-lg-3 pt-3 pb-3 px-3 d-flex flex-column align-items-md-center align-items-center">
                             <h2 className=" ">Menu</h2>
-                            <div className="d-flex flex-column gap-3">
+                            <div className="d-flex flex-column gap-2 text-center">
                                 <Link to="/home" className='text-decoration-none  text-white'>Home</Link>
-                                <Link to="#services"  className='text-decoration-none  text-white'>Services</Link>
-                                <Link to="/about"  className='text-decoration-none  text-white'>About</Link>
+                                <Link to="/home#services"  className='text-decoration-none  text-white'>Services</Link>
+                                <Link to="/home#faq"  className='text-decoration-none  text-white'>FAQs</Link>
                                 <Link to="/blogs"  className='text-decoration-none  text-white'>Blogs</Link>
+                                <Link to="/about"  className='text-decoration-none  text-white'>About</Link>
 
                                 {/* <Nav.Link to="/home">Home</Nav.Link>
                             <Nav.Link to="#services">Services</Nav.Link>

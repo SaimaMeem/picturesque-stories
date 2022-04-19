@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const [validated, setValidated] = useState(false);
     const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] = useSignInWithEmailAndPassword(auth);
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -64,17 +64,18 @@ const Login = () => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
+            });
         }
         else {
-            toast.error("Please enter your email address!",{position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
+            toast.error("Please enter your email address!", {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 
@@ -111,8 +112,8 @@ const Login = () => {
                         {divElement}
                     </div>
                     <Button type="submit" className='text-center my-3 mx-auto btn-card w-25 text-uppercase'>Login</Button>
-                    <p className='mb-1'>Forget Password?<Button className='text-warning text-decoration-none text-uppercase fw-bold' variant='link' onClick={resetPassword}>Reset Password</Button></p>
-                    <p className='mb-3'>Don't have an account? &nbsp;&nbsp;<Link to="/register" className='text-warning text-decoration-none text-uppercase fw-bold' onClick={navigateRegister} >Register</Link></p>
+                    <p className='mb-1 para'>Forget Password?<Button className='text-warning text-decoration-none text-uppercase fw-bold' variant='link' onClick={resetPassword}>Reset Password</Button></p>
+                    <p className='mb-3 para'>Don't have an account? &nbsp;&nbsp;<Link to="/register" className='text-warning text-decoration-none text-uppercase fw-bold btn btn-link' onClick={navigateRegister} >Register</Link></p>
                 </Form.Group>
             </Form>
             <div className="or"> OR </div>

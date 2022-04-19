@@ -1,7 +1,7 @@
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Button, Spinner } from 'react-bootstrap';
+import { Button, Container, Spinner } from 'react-bootstrap';
 import '../Socials/Socials.css';
 import google from '../../../images/socials/google-logo.png'
 import { useSignInWithGoogle, useSignInWithFacebook } from 'react-firebase-hooks/auth';
@@ -28,13 +28,13 @@ const Socials = () => {
         console.log(googleUser || facebookUser);
     }
     return (
-        <div className='text-center'>
+        <Container className='text-center'>
             <div className='mb-5'>
                 {divElement}
             </div>
-            <Button type="submit" className='d-block text-center mt-3 mx-auto btn-social btn-google w-25 text-uppercase' onClick={() => signInWithGoogle()}><img className='mx-2' style={{ width: '20px' }} src={google} alt='' />Continue with Google</Button>
-            <Button type="submit" className='text-center mt-3 mx-auto btn-social btn-facebook w-25 text-uppercase' onClick={() => signInWithFacebook()}> <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon> &nbsp;&nbsp;Continue with Facebook</Button>
-        </div>
+            <Button type="submit" className='d-block text-center mt-3 mx-auto btn-social btn-google text-uppercase' onClick={() => signInWithGoogle()}><img className='google-icon mx-2' style={{ width: '20px' }} src={google} alt='' />Continue with Google</Button>
+            <Button type="submit" className='text-center mt-3 mx-auto btn-social btn-facebook text-uppercase' onClick={() => signInWithFacebook()}> <FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon> &nbsp;&nbsp;Continue with Facebook</Button>
+        </Container>
 
     );
 };
