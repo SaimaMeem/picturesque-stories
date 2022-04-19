@@ -1,8 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { Form, Row, Col, Button, Container, FloatingLabel, Spinner, ToastContainer } from 'react-bootstrap';
+import { Form, Row, Col, Button, Container, FloatingLabel, Spinner } from 'react-bootstrap';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile,useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Socials from '../Socials/Socials';
 import '../Register/Register.css';
+import auth from '../../../firebase.init';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
     const [validated, setValidated] = useState(false);
     const usernameRef = useRef('');
@@ -12,7 +16,21 @@ const Register = () => {
     const navigate = useNavigate();
     const [agree, setAgree] = useState(false);
     let divElement;
-    const handleSubmit = (event) => {
+    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+    const [updateProfile, updating, upadteError] = useUpdateProfile(auth);
+    const [sendEmailVerification, sending, errorEmailVerification] = useSendEmailVerification(auth);
+    if (error) {
+        divElement = <p className='text-danger'>Error: {error?.message}</p>;
+    }
+    if (loading) {
+        divElement = <Spinner animation="border" role="status" variant="warning">
+            <span className="visually-hidden">Loading...</span>
+        </Spinner>;
+    }
+    const navigateLogin = event => {
+        navigate('/login');
+    }
+    const handleSubmit = async (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -20,12 +38,15 @@ const Register = () => {
         }
         setValidated(true);
         event.preventDefault();
+        const username = usernameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         console.log(email, password);
-        if (email && password) {
-            // signInWithEmailAndPassword(email, password);
-        }
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: username });
+        await sendEmailVerification();
+        // console.log('Updated profile');
+        navigate('/home');
     };
     return (
         <Container className='mt-4 mb-5'>
@@ -78,8 +99,8 @@ const Register = () => {
                     <div className='mb-3'>
                         {divElement}
                     </div>
-                    <Button type="submit" className='text-center my-3 mx-auto btn-card w-25 text-uppercase'  disabled={!agree}>Register</Button>
-                    <p className='mb-3'>Already have an account? &nbsp;&nbsp;<Link to="/login" className='text-warning text-decoration-none text-uppercase fw-bold' >Login</Link></p>
+                    <Button type="submit" className='text-center my-3 mx-auto btn-card w-25 text-uppercase' disabled={!agree}>Register</Button>
+                    <p className='mb-3'>Already have an account? &nbsp;&nbsp;<Link to="/login" className='text-warning text-decoration-none text-uppercase fw-bold' onClick={navigateLogin} >Login</Link></p>
                 </Form.Group>
             </Form>
             <div className="or"> OR </div>

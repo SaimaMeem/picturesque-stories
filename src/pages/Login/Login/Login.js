@@ -11,6 +11,7 @@ const Login = () => {
     const [validated, setValidated] = useState(false);
     const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] = useSignInWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const location = useLocation();
@@ -27,8 +28,8 @@ const Login = () => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        console.log(email,password);
-        if(email && password){
+        console.log(email, password);
+        if (email && password) {
             signInWithEmailAndPassword(email, password);
         }
     };
@@ -55,10 +56,25 @@ const Login = () => {
         const email = emailRef.current.value;
         if (email) {
             await sendPasswordResetEmail(email);
-            toast('Sent email');
+            toast.success('Sent email', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         }
         else {
-            toast("Please enter your email address!");
+            toast.error("Please enter your email address!",{position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
         }
     }
 
@@ -83,7 +99,7 @@ const Login = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col} md="4" className='mx-auto'>
                         <FloatingLabel controlId="floatingPassword" label="Password">
-                            <Form.Control type="password" placeholder="Password"  ref={passwordRef}  required />
+                            <Form.Control type="password" placeholder="Password" ref={passwordRef} required />
                             <Form.Control.Feedback type="invalid">
                                 Please provide a password.
                             </Form.Control.Feedback>
@@ -101,7 +117,18 @@ const Login = () => {
             </Form>
             <div className="or"> OR </div>
             <Socials></Socials>
-            <ToastContainer />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+
         </Container>
     );
 };
