@@ -23,7 +23,7 @@ const Banner = () => {
 
                 <Carousel.Caption>
                     <h3>Creating Quality Photos</h3>
-                    <p>We shoot people, streets, places, nature - everything that inspires me and makes me shoot and shoot again! </p>
+                    <p>I shoot people, streets, places, nature - everything that inspires me and makes me shoot and shoot again! </p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -34,7 +34,7 @@ const Banner = () => {
                 />
                 <Carousel.Caption>
                     <h3>Emotional Sense of Photography</h3>
-                    <p>Our motto is  “Don’t shoot what it looks like. Shoot what it feels like” by David Alan Harvey.</p>
+                    <p>My motto is  “Don’t shoot what it looks like. Shoot what it feels like” by David Alan Harvey.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
