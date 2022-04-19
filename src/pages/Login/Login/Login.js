@@ -42,13 +42,13 @@ const Login = () => {
             <span className="visually-hidden">Loading...</span>
         </Spinner>;
     }
-    if (emailUser) {
-        navigate('/home');
-        console.log(emailUser);
-    }
-    // if (user) {
-    //     navigate(from, { replace: true });
+    // if (emailUser) {
+    //     navigate('/home');
+    //     console.log(emailUser);
     // }
+    if (emailUser) {
+        navigate(from, { replace: true });
+    }
     const navigateRegister = event => {
         navigate('/register');
     }

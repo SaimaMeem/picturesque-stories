@@ -6,12 +6,14 @@ import '../Socials/Socials.css';
 import google from '../../../images/socials/google-logo.png'
 import { useSignInWithGoogle, useSignInWithFacebook } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Socials = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
+    const location = useLocation();
     const navigate = useNavigate();
     let divElement;
+    let from = location?.state?.from?.pathname || "/";
     if (googleError || facebookError) {
         divElement = <p className='text-danger'>Error: {googleError?.message} {facebookError?.message}</p>;
     }
@@ -21,7 +23,8 @@ const Socials = () => {
         </Spinner>;
     }
     if (googleUser || facebookUser) {
-        navigate('/home');
+        // navigate('/home');
+        navigate(from, { replace: true });
         console.log(googleUser || facebookUser);
     }
     return (

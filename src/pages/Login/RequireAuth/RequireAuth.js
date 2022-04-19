@@ -8,7 +8,11 @@ const RequireAuth = ({ children }) => {
     let location = useLocation();
 
     if (loading) {
-        return <Spinner className="my-5" animation="border" variant="warning" />
+        return <>
+            <div className="my-5 text-center">
+            <Spinner className="my-5" animation="border" variant="warning" />
+            </div>
+        </>
     }
     if (!user) {
         return <Navigate to="/login" state={{ from: location }} replace />;
