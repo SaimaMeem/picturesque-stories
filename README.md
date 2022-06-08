@@ -3,7 +3,7 @@
 [Picturesque Stories](https://picturesque-stories.web.app/)
 
 ## Description
-* This is a freelancer photography studio where different types of photo session services are offered.
+* This is a website for a freelancer photographer who offers different types of photo session services.
 * It is multi-page website.
 * In the home page, there is a services and FAQ section
 * To book any services, user must login.
