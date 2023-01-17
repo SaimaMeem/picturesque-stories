@@ -25,7 +25,7 @@ const Socials = () => {
     if (googleUser || facebookUser) {
         // navigate('/home');
         navigate(from, { replace: true });
-        console.log(googleUser || facebookUser);
+        // console.log(googleUser || facebookUser);
     }
     return (
         <Container className='text-center'>

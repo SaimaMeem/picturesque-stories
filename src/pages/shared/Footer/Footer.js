@@ -26,12 +26,8 @@ const Footer = () => {
                                 <Link to="/home" className='text-decoration-none  text-white'>Home</Link>
                                 <Link to="/home#services"  className='text-decoration-none  text-white'>Services</Link>
                                 <Link to="/home#faq"  className='text-decoration-none  text-white'>FAQs</Link>
-                                <Link to="/blogs"  className='text-decoration-none  text-white'>Blogs</Link>
-                                <Link to="/about"  className='text-decoration-none  text-white'>About</Link>
-
-                                {/* <Nav.Link to="/home">Home</Nav.Link>
-                            <Nav.Link to="#services">Services</Nav.Link>
-                            <Nav.Link to="/about">About</Nav.Link> */}
+                                {/* <Link to="/blogs"  className='text-decoration-none  text-white'>Blogs</Link>
+                                <Link to="/about"  className='text-decoration-none  text-white'>About</Link> */}
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-12 order-lg-2 col-12 px-3 pt-3 pb-2">

@@ -7,6 +7,7 @@ import '../Login/Login.css'
 import Socials from '../Socials/Socials';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const Login = () => {
     const [validated, setValidated] = useState(false);
     const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] = useSignInWithEmailAndPassword(auth);
@@ -28,7 +29,7 @@ const Login = () => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        console.log(email, password);
+        // console.log(email, password);
         if (email && password) {
             signInWithEmailAndPassword(email, password);
         }

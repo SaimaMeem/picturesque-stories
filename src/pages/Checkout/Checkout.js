@@ -26,7 +26,7 @@ const Checkout = () => {
         let address = addressRef.current.value;
         let phone = phoneRef.current.value;
         // let comments = commentsRef.current.value;
-        console.log(user);
+        // console.log(user);
         if (password && address && phone) {
             toast.info('Thank you for your Booking!', {
                 position: "bottom-right",

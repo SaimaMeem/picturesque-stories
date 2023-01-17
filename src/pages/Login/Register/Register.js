@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Form, Row, Col, Button, Container, FloatingLabel, Spinner } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile,useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Socials from '../Socials/Socials';
 import '../Register/Register.css';
@@ -17,7 +17,7 @@ const Register = () => {
     const [agree, setAgree] = useState(false);
     let divElement;
     const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
-    const [updateProfile, updating, upadteError] = useUpdateProfile(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     const [sendEmailVerification, sending, errorEmailVerification] = useSendEmailVerification(auth);
     if (error) {
         divElement = <p className='text-danger'>Error: {error?.message}</p>;
@@ -41,12 +41,14 @@ const Register = () => {
         const username = usernameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        console.log(email, password);
+        // console.log(email, password);
         await createUserWithEmailAndPassword(email, password);
-        await updateProfile({ displayName: username });
-        await sendEmailVerification();
-        // console.log('Updated profile');
-        navigate('/home');
+        if (!error) {
+            await updateProfile({ displayName: username });
+            await sendEmailVerification();
+            // console.log('Updated profile');
+            navigate('/home');
+        }
     };
     return (
         <Container className='mt-4 mb-5'>
